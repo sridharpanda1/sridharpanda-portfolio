@@ -41,19 +41,21 @@
             <img class="footer-img" src="static/img/sridhar_panda_logo_black.png" alt="">
           </h1>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button"
+          data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navbarCollapse" class="collapse navbar-collapse">
           <div class="navbar-nav m-auto py-0">
-            <a href="#home" class="nav-item nav-link active">Home</a>
-            <a href="#about" class="nav-item nav-link">About</a>
-            <a href="#skills" class="nav-item nav-link">Skills</a>
-            <a href="#quali" class="nav-item nav-link">Qualifications</a>
+            <a href="#home" class="nav-item nav-link sp-nav-link active" data-toggle="collapse" data-target=".navbar-collapse.show">Home</a>
+            <a href="#about" class="nav-item nav-link sp-nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">About</a>
+            <a href="#skills" class="nav-item nav-link sp-nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Skills</a>
+            <a href="#quali" class="nav-item nav-link sp-nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Qualifications</a>
             <!-- <a href="#cert" class="nav-item nav-link">Certifications</a> -->
-            <a href="#proj" class="nav-item nav-link">Projects</a>
-            <a href="#review" class="nav-item nav-link">Review</a>
-            <a href="#contact" class="nav-item nav-link">Contact</a>    
+            <a href="#proj" class="nav-item nav-link sp-nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Projects</a>
+            <a href="#review" class="nav-item nav-link sp-nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Review</a>
+            <a href="#contact" class="nav-item nav-link sp-nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact</a>    
           </div>
             <!--<a href="" class="btn btn-menu d-none d-lg-block" style="background-color:#457efa; color:#fff;">Hire Me</a>-->
         </div>
@@ -649,4 +651,24 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <!-- Template Javascript -->
     <script src="static/js/main.js"></script>
+    <script>
+    $(function () {
+      $('.sp-nav-link').on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 600, 'linear');
+        if (window.matchMedia("(max-width: 991px)").matches) {
+          $("nav").toggleClass("navbar-white");
+          $("nav").toggleClass("navbar-trans");
+          window.setTimeout(function () {
+            $("nav").toggleClass("fixed-nav");
+          }, 400);
+        }
+      });
+      $(".navbar-toggler").click(function () {
+        $("nav").toggleClass("navbar-white");
+        $("nav").toggleClass("navbar-trans");
+        $("nav").toggleClass("fixed-nav");
+      })
+    });      
+    </script>
 </body>
